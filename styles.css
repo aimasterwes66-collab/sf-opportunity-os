@@ -1,0 +1,1219 @@
+/* ============================================================ */
+/* SF OPPORTUNITY OS v2 — HIGH-CONTRAST BLACK/WHITE DESIGN SYSTEM */
+/* Pure black background, pure white text, no clutter, lots of   */
+/* padding. Uppercase labels, monospace data, clean spacing.     */
+/* ============================================================ */
+
+/* --- CSS RESET & BASE --------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Color palette — strict high contrast black/white */
+  --bg-primary: #000000;
+  --bg-card: #0A0A0A;
+  --bg-hover: #111111;
+  --text-primary: #FFFFFF;
+  --text-muted: #888888;
+  --border-default: #333333;
+  --border-hover: #FFFFFF;
+  --border-active: #FFFFFF;
+  --accent-bar: #FFFFFF;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Typography */
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Courier New', monospace;
+  --letter-spacing: 0.05em;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  /* Subtle scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-primary) var(--bg-card);
+}
+
+/* Webkit scrollbar (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-primary);
+  border-radius: 0;
+}
+
+/* --- TYPOGRAPHY --------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  font-weight: 700;
+}
+
+/* --- TOP BAR ------------------------------------------------ */
+/* Brand header with large white uppercase title and stats line   */
+.top-bar {
+  border-bottom: 1px solid var(--border-default);
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  text-align: center;
+}
+
+.brand {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+}
+
+.stats-line {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* --- SEARCH SECTION ----------------------------------------- */
+/* Large prominent search input with subtle white border          */
+.search-section {
+  padding: var(--space-xl) var(--space-xl) var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-input {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-md) var(--space-lg);
+  text-transform: uppercase;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+}
+
+.search-input:focus {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 0 1px var(--border-hover);
+}
+
+/* --- FILTER BAR --------------------------------------------- */
+/* Row of dropdown filters: Category, Neighborhood, Status        */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 var(--space-xl) var(--space-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.filter-group label {
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.filter-select {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-sm) var(--space-md);
+  text-transform: uppercase;
+  cursor: pointer;
+  min-width: 180px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23FFFFFF' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.filter-select:focus {
+  border-color: var(--border-hover);
+}
+
+.filter-select option {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Clear filters button */
+.btn-clear {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-sm) var(--space-md);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: fit-content;
+}
+
+.btn-clear:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* --- QUICK CATEGORY BUTTONS -------------------------------- */
+/* One-click filter buttons for the most-used categories          */
+/* These sit between the filter dropdowns and the view toggle      */
+/* Clicking a button instantly filters to that category            */
+/* The "SHOW ALL" button resets the category filter               */
+.quick-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding: var(--space-md) var(--space-xl) var(--space-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cat-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-sm) var(--space-md);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.cat-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.cat-btn.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* --- VIEW TOGGLE -------------------------------------------- */
+/* Toggle buttons: GRID | CALENDAR | NEIGHBORHOODS | TRACKER     */
+.view-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  justify-content: center;
+  padding: 0 var(--space-xl) var(--space-lg);
+  border-bottom: 1px solid var(--border-default);
+  margin-bottom: var(--space-lg);
+}
+
+.view-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-right: none;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-sm) var(--space-lg);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-btn:last-child {
+  border-right: 1px solid var(--border-default);
+}
+
+.view-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.view-btn.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* --- ACTIVE FILTERS DISPLAY --------------------------------- */
+/* Shows count of currently applied filters                       */
+.active-filters {
+  text-align: center;
+  padding: 0 var(--space-xl) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- MAIN CONTENT AREA -------------------------------------- */
+/* Container for all dynamic view content                         */
+.main-content {
+  padding: 0 var(--space-xl) var(--space-2xl);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 400px;
+}
+
+.loading {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+.no-results {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* --- CARDS VIEW (DEFAULT) ----------------------------------- */
+/* Responsive grid: 1 col mobile, 2 tablet, 3 desktop             */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- OPPORTUNITY CARDS -------------------------------------- */
+/* Individual card styling with hover border change               */
+.opportunity-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  padding: var(--space-lg);
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left accent bar on saved/active items */
+.opportunity-card.saved::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-bar);
+}
+
+.opportunity-card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-hover);
+}
+
+.opportunity-card.saved {
+  border-color: var(--border-active);
+}
+
+/* Card category label at top */
+.card-category {
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
+/* Card source/program name */
+.card-source {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+}
+
+/* Card organization name */
+.card-org {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--space-sm);
+}
+
+/* Card benefits text */
+.card-benefits {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-benefits.expanded {
+  -webkit-line-clamp: unset;
+}
+
+/* Contact info lines on cards */
+.card-contact {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.card-contact a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.card-contact a:hover {
+  text-decoration: none;
+}
+
+/* Status badge on card */
+.card-status {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border-default);
+  margin-top: var(--space-sm);
+  margin-right: var(--space-sm);
+}
+
+.card-status.status-active {
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+.card-status.status-limited {
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+}
+
+/* Save button on card */
+.btn-save {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-xs) var(--space-sm);
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: var(--space-sm);
+  transition: all 0.2s;
+}
+
+.btn-save:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.btn-save.saved {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* Show more / show less link */
+.show-more {
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-bottom: var(--space-sm);
+}
+
+.show-more:hover {
+  color: var(--text-primary);
+}
+
+/* Value display on card */
+.card-value {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: var(--space-sm);
+  border-top: 1px solid var(--border-default);
+  padding-top: var(--space-sm);
+}
+
+/* --- CALENDAR VIEW ------------------------------------------ */
+/* Month grid with prev/next navigation                           */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.calendar-title {
+  font-size: 1.5rem;
+  letter-spacing: var(--letter-spacing);
+}
+
+.calendar-nav {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.calendar-nav button {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-sm) var(--space-md);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.calendar-nav button:hover {
+  border-color: var(--border-hover);
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--border-default);
+  border: 1px solid var(--border-default);
+}
+
+.calendar-day-label {
+  background: var(--bg-primary);
+  text-align: center;
+  padding: var(--space-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+.calendar-day {
+  background: var(--bg-card);
+  min-height: 80px;
+  padding: var(--space-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.calendar-day:hover {
+  background: var(--bg-hover);
+}
+
+.calendar-day.other-month {
+  background: var(--bg-primary);
+  color: var(--text-muted);
+}
+
+.calendar-day-number {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: var(--space-xs);
+}
+
+/* Opportunity dots on calendar days */
+.calendar-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.calendar-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--text-primary);
+  border-radius: 50%;
+}
+
+/* --- CALENDAR DAY DETAIL PANEL ------------------------------ */
+/* Shows opportunities matching a clicked calendar day            */
+.day-detail {
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--border-default);
+  padding-top: var(--space-lg);
+}
+
+.day-detail h3 {
+  margin-bottom: var(--space-md);
+  font-size: 1.1rem;
+}
+
+/* --- NEIGHBORHOODS VIEW ------------------------------------- */
+/* Grouped by neighborhood, collapsible sections                  */
+.neighborhood-section {
+  margin-bottom: var(--space-sm);
+  border: 1px solid var(--border-default);
+}
+
+.neighborhood-header {
+  background: var(--bg-card);
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  border: none;
+  width: 100%;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.neighborhood-header:hover {
+  background: var(--bg-hover);
+}
+
+.neighborhood-count {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.neighborhood-content {
+  display: none;
+  padding: var(--space-lg);
+  border-top: 1px solid var(--border-default);
+}
+
+.neighborhood-content.open {
+  display: block;
+}
+
+/* Neighborhood cards list */
+.neighborhood-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .neighborhood-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- TRACKER VIEW ------------------------------------------- */
+/* Saved items with interactive checklist management              */
+.tracker-empty {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+.tracker-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-lg);
+  position: relative;
+}
+
+.tracker-item.saved::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-bar);
+}
+
+.tracker-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-sm);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.tracker-item-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+}
+
+.tracker-item-org {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+}
+
+.tracker-item-remove {
+  background: none;
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tracker-item-remove:hover {
+  border-color: #ff4444;
+  color: #ff4444;
+}
+
+/* Checklist within tracker items */
+.tracker-checklist {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-default);
+}
+
+.tracker-checklist h4 {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.checklist-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border-default);
+  background: var(--bg-primary);
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.checklist-item input[type="checkbox"]:checked {
+  border-color: var(--border-active);
+  background: var(--text-primary);
+}
+
+.checklist-item input[type="checkbox"]:checked::after {
+  content: '\2713';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--bg-primary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.checklist-item.checked span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* Progress bar */
+.progress-bar {
+  margin-top: var(--space-sm);
+  height: 4px;
+  background: var(--border-default);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--text-primary);
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* Notes textarea in tracker */
+.tracker-notes {
+  margin-top: var(--space-md);
+}
+
+.tracker-notes label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.tracker-notes textarea {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: var(--space-sm);
+  resize: vertical;
+  min-height: 60px;
+  outline: none;
+}
+
+.tracker-notes textarea:focus {
+  border-color: var(--border-hover);
+}
+
+/* Tracker summary bar */
+.tracker-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+.tracker-summary span {
+  color: var(--text-muted);
+}
+
+.tracker-summary strong {
+  color: var(--text-primary);
+}
+
+/* --- TRACKER PANEL (aside overlay) -------------------------- */
+/* Side panel for tracker, hidden by default                      */
+.tracker-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 600px;
+  height: 100vh;
+  background: var(--bg-primary);
+  border-left: 1px solid var(--border-default);
+  z-index: 200;
+  overflow-y: auto;
+  padding: var(--space-xl);
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.tracker-header h2 {
+  font-size: 1.25rem;
+}
+
+.btn-close {
+  background: var(--bg-card);
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.tracker-list {
+  margin-bottom: var(--space-xl);
+}
+
+.tracker-actions {
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-default);
+}
+
+/* --- EXPORT AREA -------------------------------------------- */
+.export-area {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.btn-export {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing);
+  padding: var(--space-md) var(--space-xl);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-export:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* --- DETAIL MODAL ------------------------------------------- */
+/* Full-screen overlay showing expanded card details              */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 300;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-xl);
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  max-width: 700px;
+  width: 100%;
+  padding: var(--space-xl);
+  position: relative;
+  margin-top: var(--space-xl);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: none;
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.modal-category {
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.modal-source {
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+}
+
+.modal-org {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--space-lg);
+}
+
+/* Detail sections */
+.detail-section {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+}
+
+.detail-section h3 {
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.detail-section p,
+.detail-section li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.detail-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-section ul li {
+  padding-left: var(--space-md);
+  position: relative;
+  margin-bottom: var(--space-xs);
+}
+
+.detail-section ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.detail-section a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.detail-section a:hover {
+  text-decoration: none;
+}
+
+/* Contact grid in modal */
+.detail-contact {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.detail-contact a {
+  color: var(--text-primary);
+}
+
+/* --- RESPONSIVE STYLES -------------------------------------- */
+/* Mobile: stack filters, full-width cards, smaller padding      */
+@media (max-width: 767px) {
+  .top-bar {
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+  }
+
+  .search-section {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 var(--space-md) var(--space-md);
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-select {
+    width: 100%;
+  }
+
+  .view-toggle {
+    padding: 0 var(--space-md) var(--space-md);
+  }
+
+  .view-btn {
+    flex: 1;
+    padding: var(--space-sm);
+    font-size: 0.7rem;
+  }
+
+  .main-content {
+    padding: 0 var(--space-md) var(--space-xl);
+  }
+
+  .modal {
+    padding: var(--space-sm);
+  }
+
+  .modal-content {
+    padding: var(--space-lg);
+    margin-top: var(--space-sm);
+  }
+
+  .tracker-panel {
+    max-width: 100%;
+    padding: var(--space-md);
+  }
+
+  .calendar-day {
+    min-height: 50px;
+    font-size: 0.75rem;
+  }
+
+  .tracker-summary {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}
+
+/* --- PRINT STYLES ------------------------------------------- */
+/* White background, black text for printer-friendly output       */
+@media print {
+  body {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  .top-bar,
+  .search-section,
+  .filter-bar,
+  .view-toggle,
+  .tracker-panel,
+  .export-area,
+  .btn-save,
+  .btn-clear,
+  .btn-close,
+  .btn-export,
+  .tracker-item-remove {
+    display: none !important;
+  }
+
+  .opportunity-card {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .main-content {
+    max-width: 100%;
+  }
+}

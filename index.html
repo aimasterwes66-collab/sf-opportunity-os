@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SF OPPORTUNITY OS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- TOP BAR: Branding and system stats                            -->
+  <!-- Shows: total opportunities count, categories count, saved count -->
+  <!-- ============================================================ -->
+  <header class="top-bar">
+    <h1 class="brand">SF OPPORTUNITY OS</h1>
+    <div class="stats-line" id="stats-line">
+      <!-- Populated by JS: e.g., "78 OPPORTUNITIES | 15 CATEGORIES | 0 SAVED" -->
+      <span>Loading...</span>
+    </div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- SEARCH SECTION: Large search input for filtering opportunities -->
+  <!-- ============================================================ -->
+  <section class="search-section">
+    <input
+      type="text"
+      id="search-input"
+      class="search-input"
+      placeholder="SEARCH OPPORTUNITIES..."
+      autocomplete="off"
+    >
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FILTER BAR: Dropdown filters for narrowing results            -->
+  <!-- Category, Neighborhood, Status dropdowns + clear button         -->
+  <!-- ============================================================ -->
+  <section class="filter-bar" id="filter-bar">
+    <div class="filter-group">
+      <label for="filter-category">CATEGORY</label>
+      <select id="filter-category" class="filter-select">
+        <option value="">ALL CATEGORIES</option>
+        <!-- Populated dynamically from data -->
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filter-neighborhood">NEIGHBORHOOD</label>
+      <select id="filter-neighborhood" class="filter-select">
+        <option value="">ALL NEIGHBORHOODS</option>
+        <!-- Populated dynamically from data -->
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filter-status">STATUS</label>
+      <select id="filter-status" class="filter-select">
+        <option value="">ALL</option>
+        <option value="Active">ACTIVE</option>
+        <option value="TIME-LIMITED">TIME-LIMITED</option>
+      </select>
+    </div>
+    <button id="clear-filters" class="btn-clear" title="Clear all filters">CLEAR</button>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- QUICK CATEGORY BUTTONS: One-click filter for top categories   -->
+  <!-- These are the most-used categories — click to filter instantly  -->
+  <!-- A "SHOW ALL" button resets the category filter                 -->
+  <!-- ============================================================ -->
+  <section class="quick-categories" id="quick-categories">
+    <button class="cat-btn active" data-cat="">SHOW ALL</button>
+    <button class="cat-btn" data-cat="Recovery & Health">RECOVERY & HEALTH</button>
+    <button class="cat-btn" data-cat="Technology Access">TECH ACCESS</button>
+    <button class="cat-btn" data-cat="AI Gigs">AI GIGS</button>
+    <button class="cat-btn" data-cat="Makerspaces">MAKERSPACES</button>
+    <button class="cat-btn" data-cat="Research Studies">PAID STUDIES</button>
+    <button class="cat-btn" data-cat="Workforce">WORKFORCE</button>
+    <button class="cat-btn" data-cat="Arts & Creative">ARTS</button>
+    <button class="cat-btn" data-cat="Hidden">HIDDEN GEMS</button>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- VIEW TOGGLE: Switch between Grid / Calendar / Neighborhoods  -->
+  <!-- ============================================================ -->
+  <section class="view-toggle" id="view-toggle">
+    <button class="view-btn active" data-view="cards">GRID</button>
+    <button class="view-btn" data-view="calendar">CALENDAR</button>
+    <button class="view-btn" data-view="neighborhoods">NEIGHBORHOODS</button>
+    <button class="view-btn" data-view="tracker">TRACKER</button>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ACTIVE FILTERS DISPLAY: Shows currently applied filter count    -->
+  <!-- ============================================================ -->
+  <section class="active-filters" id="active-filters" style="display:none;">
+    <span id="filter-count"></span>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT AREA: JavaScript renders all views here          -->
+  <!-- Cards grid, calendar grid, neighborhood list, or tracker      -->
+  <!-- ============================================================ -->
+  <main id="main-content" class="main-content">
+    <!-- Dynamic content rendered by app.js -->
+    <div class="loading">LOADING OPPORTUNITIES...</div>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- TRACKER PANEL: Hidden by default, shows saved items           -->
+  <!-- Checklist management, progress tracking, notes                -->
+  <!-- ============================================================ -->
+  <aside id="tracker-panel" class="tracker-panel" style="display:none;">
+    <div class="tracker-header">
+      <h2>MY TRACKER</h2>
+      <button id="tracker-close" class="btn-close" title="Close tracker">&#10005; CLOSE</button>
+    </div>
+    <div class="tracker-summary" id="tracker-summary">
+      <!-- Populated by JS: total saved, progress stats -->
+    </div>
+    <div class="tracker-list" id="tracker-list">
+      <!-- Populated by JS: saved items with checklists -->
+    </div>
+    <div class="tracker-actions">
+      <button id="btn-export" class="btn-export">EXPORT TO TXT</button>
+    </div>
+  </aside>
+
+  <!-- ============================================================ -->
+  <!-- EXPORT BUTTON AREA: Visible in tracker view for text export   -->
+  <!-- ============================================================ -->
+  <section class="export-area" id="export-area" style="display:none;">
+    <button id="btn-export-main" class="btn-export">EXPORT TO TXT</button>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DETAIL MODAL: Expanded card view with full details            -->
+  <!-- Shows all fields: eligibility, process, schedule, notes, etc. -->
+  <!-- ============================================================ -->
+  <div id="detail-modal" class="modal" style="display:none;">
+    <div class="modal-content" id="modal-content">
+      <!-- Populated by JS when a card is clicked -->
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT: All application logic, no external dependencies   -->
+  <!-- ============================================================ -->
+  <script src="app.js"></script>
+
+</body>
+</html>
